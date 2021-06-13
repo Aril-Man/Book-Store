@@ -34,23 +34,17 @@
                                     <h3 class="text-center font-weight-light my-4">Login</h3>
                                 </div>
                                 <div class="card-body">
-                                    <form action="{{url('proses_login')}}" method="POST" id="logForm">
-                                        {{ csrf_field() }}
+                                    <form action="{{url('proses_login')}}" method="POST">
+                                        @csrf
                                         <div class="form-group">
                                             <label class="small mb-1" for="username">Username</label>
                                             <input class="form-control py-4" id="username" name="username"
                                                 type="text" placeholder="Masukkan Username" />
-                                            @if($errors->has('username'))
-                                            <span class="error">{{ $errors->first('username') }}</span>
-                                            @endif
                                         </div>
                                         <div class="form-group">
                                             <label class="small mb-1" for="password">Password</label>
                                             <input class="form-control py-4" id="password" type="password"
-                                                name="password" placeholder="Masukkan Password" />
-                                            @if($errors->has('password'))
-                                            <span class="error">{{ $errors->first('password') }}</span>
-                                            @endif
+                                                name="password" placeholder="Masukkan Password"/>
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox">
@@ -59,6 +53,14 @@
                                                 <label class="custom-control-label" for="rememberPasswordCheck">Remember
                                                     password</label>
                                             </div>
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <select type="text" name="akses" class="form-control" placeholder="Akses">
+                                                <option>Pilih salah satu Akses</option>
+                                                <option value="manager">Manager</option>
+                                                <option value="admin">Admin</option>
+                                                <option value="kasir">Kasir</option>
+                                            </select>
                                         </div>
                                         <div
                                             class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">

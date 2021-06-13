@@ -15,25 +15,13 @@ class AuthController extends Controller
 
     public function proses_login(Request $request)
     {
-        request()->validate([
-        'username' => 'required',
-        'password' => 'required',
-        ]);
+       $credentials = $request->only('username','password','akses');
 
-        $credentials = $request->only('username', 'password');
-        if (Auth::attempt($credentials)) {
-            $user = Auth::user();
-            if ($user->username == 'admin') {
-                return view('admin.index');
-            }
-            elseif ($user->username == 'kasir') {
-                return redirect()->route('/kasir/index');
-            }
-            elseif ($user->username == 'manager') {
-                return redirect()->intended('manager');
-            }
-        }
-        return redirect('/')->with('alert','Oppes! Silahkan Cek Inputanmu');
+       if (Auth::attempt($credentials)) {
+           return redirect('/admin')->with('alert','Anda berhasil masuk');
+       }
+
+       return redirect('/')->with('alert', 'Username atau password salah');
     }
     public function logout(Request $request) {
         $request->session()->flush();

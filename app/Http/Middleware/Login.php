@@ -15,17 +15,11 @@ class Login
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle(Request $request, Closure $next, $roles)
+    public function handle(Request $request, Closure $next, $akses)
     {
-        if (!Auth::check()) {
-            return redirect('login');
-        }
-        $user = Auth::user();
-
-        if($user->level == $roles)
-            return $next($request);
-
-
-        return redirect('login')->with('error',"kamu gak punya akses");
+       if (in_array($request->user()->akses, $akses)) {
+           return $next($request);
+       };
+       return redirect('/');
     }
 }
