@@ -150,7 +150,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="{{ url('/admin/buku/bukuSeringTerjual') }}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Buku Yang Sering Terjual</p>
                                 </a>
@@ -191,7 +191,7 @@
 
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
-        <div class="continer">
+        <div class="continer ml-5">
             @yield('content')
         </div>
     </div>

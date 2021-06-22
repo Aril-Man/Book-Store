@@ -112,6 +112,12 @@ class AdminController extends Controller
         return view('admin.buku.semuaBuku', ['buku' => $buku]);
     }
 
+    public function showBukuSeringTerjual()
+    {
+        $buku = Buku::all();
+        return view('admin.buku.bukuSeringTerjual', ['buku' => $buku]);
+    }
+
     public function showPenulisBuku()
     {
         $buku = Buku::all();
@@ -144,7 +150,7 @@ class AdminController extends Controller
             'telpon' => 'required',
         ]);
 
-        $distributor::where('id_distributor', $distributor->primaryKey)
+        $data = $distributor::where('id_distributor', $distributor->id_distributor)
                         ->update([
                             'nama_distributor' => $request->nama_distributor,
                             'alamat' => $request->alamat,
@@ -161,7 +167,7 @@ class AdminController extends Controller
      */
     public function destroyDistri(Distributor $distributor)
     {
-        Distributor::destroy($distributor->primaryKey);
+         $data = Distributor::destroy($distributor->id_distributor);
         return redirect('/admin/distributor/createDistri')->with('alert','Data berhasil terhapus');
     }
 }

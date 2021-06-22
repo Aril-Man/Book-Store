@@ -43,6 +43,7 @@ use Illuminate\Support\Facades\Route;
         Route::get('/buku/createBuku', [AdminController::class, 'createBuku']);
         Route::post('/buku/semuaBuku', [AdminController::class, 'storeBuku']);
         Route::get('/buku/filterPenulis', [AdminController::class, 'showPenulisBuku']);
+        Route::get('/buku/bukuSeringTerjual', [AdminController::class, 'showBukuSeringTerjual']);
     });
 
 
