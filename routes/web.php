@@ -21,20 +21,17 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/', [AuthController::class, 'index'])->name('login');
-Route::post('/proses_login', [AuthController::class, 'proses_login'])->name('proses_login');
-Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+// Route::get('/', [AuthController::class, 'index'])->name('login');
+// Route::post('/proses_login', [AuthController::class, 'proses_login'])->name('proses_login');
+// Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Khusus Kasir
-Route::middleware(['auth','login:kasir'])->group(function (){
     Route::prefix('/kasir')->group(function () {
         Route::get('/', [KasirController::class, 'index']);
         Route::get('/transaksi', [KasirController::class, 'Transaksi']);
     });
-});
 
 // Khusus Admin
-Route::middleware(['auth','login:admin'])->group(function (){
     Route::prefix('/admin')->group(function () {
         Route::get('/', [AdminController::class, 'index']);
         Route::get('/distributor/createDistri', [AdminController::class, 'createDistri']);
@@ -45,13 +42,11 @@ Route::middleware(['auth','login:admin'])->group(function (){
         Route::get('/buku/semuaBuku', [AdminController::class, 'showSemuaDataBuku']);
         Route::get('/buku/createBuku', [AdminController::class, 'createBuku']);
         Route::post('/buku/semuaBuku', [AdminController::class, 'storeBuku']);
+        Route::get('/buku/filterPenulis', [AdminController::class, 'showPenulisBuku']);
     });
-});
 
 
 // Khusus Manager
-Route::middleware(['auth','login:manager'])->group(function (){
     Route::prefix('/manager')->group(function () {
 
     });
-});

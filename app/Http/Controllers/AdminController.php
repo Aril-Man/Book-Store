@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Buku;
 use App\Models\Distributor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Bus;
 use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
@@ -94,7 +95,7 @@ class AdminController extends Controller
         return redirect('/admin/buku/semuaBuku')->with('alert','Berhasil input data');
     }
 
-    public function storePasor(Request $request)
+    public function storePasok(Request $request)
     {
 
     }
@@ -109,6 +110,12 @@ class AdminController extends Controller
     {
         $buku = Buku::all();
         return view('admin.buku.semuaBuku', ['buku' => $buku]);
+    }
+
+    public function showPenulisBuku()
+    {
+        $buku = Buku::all();
+        return view('admin.buku.filterPenulis', ['buku' => $buku]);
     }
 
     /**
