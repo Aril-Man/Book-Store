@@ -23,7 +23,7 @@
             </div>
             <div class="mb-3">
                 <label for="nama_distributor" class="form-label @error('alamat') is-invalid @enderror">Alamat</label>
-                <textarea class="form-control" aria-valuemax="{{ $distributor->alamat }}" id="alamat" name="alamat" rows="3"></textarea>
+                <textarea class="form-control" value="{{ $distributor->alamat }}" id="alamat" name="alamat" rows="3"></textarea>
             </div>
             <div class="mb-3">
                 <label for="nama_distributor" class="form-label">No Telpon</label>

@@ -44,6 +44,9 @@ use Illuminate\Support\Facades\Route;
         Route::post('/buku/semuaBuku', [AdminController::class, 'storeBuku']);
         Route::get('/buku/filterPenulis', [AdminController::class, 'showPenulisBuku']);
         Route::get('/buku/bukuSeringTerjual', [AdminController::class, 'showBukuSeringTerjual']);
+        Route::get('/buku/{buku}/editBuku', [AdminController::class, 'editbuku']);
+        Route::patch('/buku/createBuku/{buku}', [AdminController::class, 'updatebuku']);
+        Route::delete('/buku/semuaBuku/{buku}', [AdminController::class , 'destroyBuku']);
     });
 
 

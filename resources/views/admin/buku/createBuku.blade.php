@@ -10,7 +10,7 @@
             @csrf
             <div class="mb-3">
                 <label for="id_buku" class="form-label">ID Buku</label>
-                <input type="text" name="id_buku" class="form-control" id="id_buku" placeholder="Id Buku">
+                <input type="text" name="id_buku" value="{{ $fkbuku ?? '' }}" class="form-control" id="id_buku">
 
             </div>
             <div class="mb-3">
