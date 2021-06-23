@@ -3,9 +3,9 @@
 @section('title','Filter Penulis')
 @section('content')
 
-    <select class="form-select" aria-label="Default select example">
+    <select class="form-select mt-2" aria-label="Default select example">
         <option selected>Pilih Penulis</option>
-        @foreach ($buku as $bk)
+        @foreach ($buku->unique(['penulis']) as $bk)
         <option value="{{ $bk->penulis }}">{{ $bk->penulis }}</option>
         @endforeach
       </select>
